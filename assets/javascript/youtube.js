@@ -1,3 +1,6 @@
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" 
-	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-	crossorigin="anonymous"></script>
+var seach = $("currentmood").val();
+
+var queryURL = 
+	"http://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&order=relevance&q=" + search + "&safeSearch=moderate&type=video&videoDefinition=standard&videoDuration=short&videoEmbeddable=true&key=AIzaSyCGMvVG5K-LtfM2yacVG4hiPz3xp9zNCZc"  
+
+	
