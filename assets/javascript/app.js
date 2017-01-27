@@ -132,7 +132,7 @@ $("#submit").on('click', function(event){
 database.ref('users/').on('child_added', function(snapshot){
 	console.log('child added runs');
 	if(firebase.auth().currentUser !== null){
-		console.log(snapshot.val().key(user.uid));
+		console.log(snapshot.val().key(firebase.auth().currentUser.uid));
 	}
 });
 
