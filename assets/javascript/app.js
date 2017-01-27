@@ -146,10 +146,10 @@ $("#submit").on('click', function(event){
         $('#responseData').html(data);
 		if(firebase.auth().currentUser !== null){
 			user = firebase.auth().currentUser;
-
+			data = JSON.parse(data);
 			database.ref('users/' + user.uid).push({
 				displayName: user.displayName,
-				response: data
+				response: data.documents[0].score
 			})
 		}        
     })
