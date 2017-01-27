@@ -117,15 +117,45 @@ var user = null;
 
 $("#submit").on('click', function(event){
 	event.preventDefault();
+	var userMood = $("#textarea1").val();
 
-	if(firebase.auth().currentUser !== null){
-		user = firebase.auth().currentUser;
-		var text = $("#textarea1").val().trim();
+	//The params variable is the prefered format for the API. Sent the userMood text to the text parameter.
+    var params = {
+	                "documents": [
+	                    {
+	                        "language": "en",
+	                        "id": "1",
+	                        "text": JSON.stringify(userMood),
+	                    }
+	                ]
+            	};
+    //This is the ajax call for the Microsoft Azure Text Analytics Sentiment Api    
+    $.ajax({
+        method: 'POST',
+        url: "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment",
+        headers:{
+          "Content-Type":"application/json",
+          "Ocp-Apim-Subscription-Key":"63216139951246bbb219cbec04e4e18d", //brigmanlp subscription key
+          "Accept":"application/json"
+        },
+        data: JSON.stringify(params),
+        dataType: 'text',
+    })
+    .done(function(data) {
+        console.log('Here: ' + data);
+        $('#responseData').html(data);
+		if(firebase.auth().currentUser !== null){
+			user = firebase.auth().currentUser;
 
-		database.ref('users/' + user.uid).push({
-			displayName: user.displayName
-		})
-	}
+			database.ref('users/' + user.uid).push({
+				displayName: user.displayName,
+				response: data
+			})
+		}        
+    })
+    .fail(function(data) {
+        alert("error" + JSON.stringify(data));
+    });
 
 });
 
