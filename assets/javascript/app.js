@@ -121,14 +121,37 @@ var moodHigh = ["celebration", "oh yeah", "happy day", "success", "winner"];
 
 
 // This is the search function
-function search(score) {
+function searchYoutube(score) {
+	var search;
     if (score <= 0.33) {
-      	return moodLow[Math.floor(Math.random() * (moodLow.length - 1))];  
+      	search = moodLow[Math.floor(Math.random() * (moodLow.length - 1))];  
       } else if (score <= 0.66) { 
-      	return moodMid[Math.floor(Math.random() * (moodMid.length - 1))];
+      	search = moodMid[Math.floor(Math.random() * (moodMid.length - 1))];
       } else {                    
-     	return moodHigh[Math.floor(Math.random() * (moodHigh.length - 1))];
+     	search = moodHigh[Math.floor(Math.random() * (moodHigh.length - 1))];
       }
+
+	var queryURL = 
+        "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&order=relevance&q=" + search + "&safeSearch=moderate&type=video&videoDefinition=standard&videoDuration=short&videoEmbeddable=true&key=AIzaSyDwJhmvSj0_9LO3Cqc8TaymVi95AsF5KYc";
+
+	$.ajax({
+	      url: queryURL,
+	      method: 'GET'
+	    })
+	.done(function(response) {
+      console.log(response);
+      // Grabs video id from response
+      var videoId1 = response.items[0].id.videoId;
+      var videoId2 = response.items[1].id.videoId;
+      var videoId3 = response.items[2].id.videoId;
+      // Inserts video id into url for display
+      var videoLink1 = "https://www.youtube.com/watch?v=" + videoId1;
+      var videoLink2 = "https://www.youtube.com/watch?v=" + videoId2;
+      var videoLink3 = "https://www.youtube.com/watch?v=" + videoId3;
+      console.log(videoLink1);
+      console.log(videoLink2);
+      console.log(videoLink3);
+    })      
 
 };    
 
@@ -169,27 +192,8 @@ $("#submit").on('click', function(event){
 				displayName: user.displayName,
 				response: data.documents[0].score
 			})
+			searchYoutube(data.documents[0].score);
 		}
-
-		var queryURL = 
-        "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&order=relevance&q=" + search(data.documents[0].score) + "&safeSearch=moderate&type=video&videoDefinition=standard&videoDuration=short&videoEmbeddable=true&key=AIzaSyDwJhmvSj0_9LO3Cqc8TaymVi95AsF5KYc";
-
-		$.ajax({
-		      url: queryURL,
-		      method: 'GET'
-		    })
-		.done(function(response) {
-	      console.log(response);
-	      // Grabs video id from response
-	      var videoId1 = response.items[0].id.videoId;
-	      var videoId2 = response.items[1].id.videoId;
-	      var videoId3 = response.items[2].id.videoId;
-	      // Inserts video id into url for display
-	      var videoLink1 = "https://www.youtube.com/watch?v=" + videoId1;
-	      var videoLink2 = "https://www.youtube.com/watch?v=" + videoId2;
-	      var videoLink3 = "https://www.youtube.com/watch?v=" + videoId3;
-	    })        
-
 
     })
     .fail(function(data) {
