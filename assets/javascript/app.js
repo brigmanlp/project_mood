@@ -131,9 +131,9 @@ $("#submit").on('click', function(event){
 
 database.ref('users/').on('child_added', function(snapshot){
 	console.log('child added runs');
-	console.log(snapshot.val().key(user.uid));
-
-
+	if(firebase.auth().currentUser !== null){
+		console.log(snapshot.val().key(user.uid));
+	}
 });
 
 window.addEventListener('load', initApp);
