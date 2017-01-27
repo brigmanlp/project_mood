@@ -127,7 +127,7 @@ $("#submit").on('click', function(event){
 
 });
 
-database.ref('users/').on('value', function(snapshot){
+database.ref('users/' + user.uid).on('value', function(snapshot){
 	console.log('on value runs');
 	console.log(snapshot.val());
 });
