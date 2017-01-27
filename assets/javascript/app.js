@@ -129,8 +129,8 @@ $("#submit").on('click', function(event){
 
 });
 
-database.ref('users/').on('child_added', function(snapshot){
-	console.log('child added runs');
+database.ref('users/').on('value', function(snapshot){
+	console.log('value runs');
 	if(firebase.auth().currentUser !== null){
 		console.log(snapshot.val()[firebase.auth().currentUser.uid]);
 	}
