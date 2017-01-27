@@ -11,6 +11,11 @@ var database = firebase.database();
 
 var user = null;
 
+// var for each mood
+var moodLow = ["puppies", "kittens", "laughing baby", "baby animals", "ice cream"];
+var moodMid = ["you can do it", "happy song", "it could be worse", "go the distance", "keep fighting"];
+var moodHigh = ["celebration", "oh yeah", "happy day", "success", "winner"];
+
  /** Firebase Sign In Quick Start Code
      * Function called when clicking the Login/Logout button.
      */
@@ -115,6 +120,19 @@ var user = null;
     //End Google UI Quick Start code
 
 
+// This is the search function
+function search(score) {
+    if (score <= 0.33) {
+      	return moodLow[Math.floor(Math.random() * (moodLow.length - 1))];  
+      } else if (score <= 0.66) { 
+      	return moodMid[Math.floor(Math.random() * (moodMid.length - 1))];
+      } else {                    
+     	return moodHigh[Math.floor(Math.random() * (moodHigh.length - 1))];
+      }
+
+};    
+
+
 $("#submit").on('click', function(event){
 	event.preventDefault();
 	var userMood = $("#textarea1").val();
@@ -151,7 +169,28 @@ $("#submit").on('click', function(event){
 				displayName: user.displayName,
 				response: data.documents[0].score
 			})
-		}        
+		}
+
+		var queryURL = 
+        "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&order=relevance&q=" + search(data.documents[0].score) + "&safeSearch=moderate&type=video&videoDefinition=standard&videoDuration=short&videoEmbeddable=true&key=AIzaSyDwJhmvSj0_9LO3Cqc8TaymVi95AsF5KYc";
+
+		$.ajax({
+		      url: queryURL,
+		      method: 'GET'
+		    })
+		.done(function(response) {
+	      console.log(response);
+	      // Grabs video id from response
+	      var videoId1 = response.items[0].id.videoId;
+	      var videoId2 = response.items[1].id.videoId;
+	      var videoId3 = response.items[2].id.videoId;
+	      // Inserts video id into url for display
+	      var videoLink1 = "https://www.youtube.com/watch?v=" + videoId1;
+	      var videoLink2 = "https://www.youtube.com/watch?v=" + videoId2;
+	      var videoLink3 = "https://www.youtube.com/watch?v=" + videoId3;
+	    })        
+
+
     })
     .fail(function(data) {
         alert("error" + JSON.stringify(data));
