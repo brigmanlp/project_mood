@@ -126,3 +126,5 @@ $("#submit").on('click', function(event){
 	}
 
 })
+
+window.addEventListener('load', initApp);
