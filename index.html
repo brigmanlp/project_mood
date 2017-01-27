@@ -15,8 +15,8 @@
   </head>
 <body>
  	<nav>
-    	<div class="nav-wrapper">
-      		<a href="#" class="brand-logo center"><i class="material-icons">thumb_up</i><i class="material-icons">thumb_down</i> How Was Your Day?</a>
+    	<div class="nav-wrapper teal lighten-3">
+      		<a href="#" class="brand-logo center white-text"><i class="material-icons">thumb_up</i><i class="material-icons">thumb_down</i> How Was Your Day?</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down"></ul>
     	</div>
 	</nav>
@@ -36,13 +36,13 @@
 	    </div>
 	    <div class="col m6 input-field">
 	    	<form>
-	    		<textarea id="textarea1" style = "height: 200px" class="materialize-textarea" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." length="500"></textarea>
+	    		<textarea id="textarea1" style = "height: 200px" class="materialize-textarea" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." length="300"></textarea>
 	        	<label for="textarea1"></label>
 	    	</form>
-	    	<button id="submit" class="btn-large waves-effect waves-light" type="submit" name="action">Submit
+	    	<button id="submit" class="btn-large waves-effect waves-light white black-text" type="submit" name="action">Submit
 	    		<i class="material-icons right">send</i>
 	  		</button>
-	  		<button class="btn-large waves-effect waves-light" type="submit" name="action">Clear
+	  		<button class="btn-large waves-effect waves-light white black-text" type="submit" name="action">Clear
 	    		<i class="material-icons right">delete</i>
 	  		</button>
 	    </div>
@@ -63,24 +63,41 @@
 	    </div>
 	</div>
 
-  <div class="row">
-   			<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
-			  <main class="mdl-layout__content mdl-color--grey-100">
-			    <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-grid">
+ <div class="row center">
+        <button data-target="modal1" class="btn btn-large modal-trigger"><i class="large material-icons left">person_pin</i>Sign-In</button>
+      </div>
+<!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer style=" style="z-index: 500000">
+    <div class="modal-content">
+      <h4>Sign-In Using Your Gmail Account</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Continue</a>
+    </div>
+  </div>
+      <br><br>
+
+    </div>
+  </div>
+
+   			<!-- <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			  <main class="mdl-layout__content ">
+			    <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-grid"> -->
 
 			      <!-- Container for the demo -->
-			      <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--8-col-desktop">
+			      <!-- <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--8-col-desktop">
 			        <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
 			          <h2 class="mdl-card__title-text">Google Authentication</h2>
 			        </div>
 			        <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-			          <p>Sign in with your Google account below.</p>
+			          <p>Sign in with your Google account below.</p> -->
 
 			          <!-- Button that handles sign-in/sign-out -->
-			          <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in">Sign in with Google</button>
+			          <!-- <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in">Sign in with Google</button> -->
 
 			          <!-- Container where we'll display the user details -->
-			          <div id="sign-in-object" class="quickstart-user-details-container">
+			          <!-- <div id="sign-in-object" class="quickstart-user-details-container">
 			            Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
 			            <div>Firebase auth <code>currentUser</code> object value:</div>
 			            <pre><code id="quickstart-account-details">null</code></pre>
@@ -91,13 +108,22 @@
 			      </div>
 			    </div>
 			  </main>
-			</div>
+			</div> -->
   </div>
+
   
 <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
 <script src="assets/javascript/app.js"></script>
+
+<!-- This line can get merged into the app.js
+ --><script>
+$(document).ready(function() {
+  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $('.modal-trigger').leanModal();
+});
+</script>
 </body>
 </html>
