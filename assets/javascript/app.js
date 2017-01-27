@@ -129,8 +129,8 @@ $("#submit").on('click', function(event){
 
 });
 
-database.ref('users/').on('value', function(snapshot){
-	console.log('on value runs');
+database.ref('users/').on('child_added', function(snapshot){
+	console.log('child added runs');
 	console.log(snapshot.val().key(user.uid));
 
 
