@@ -1,5 +1,23 @@
+<<<<<<< HEAD
 //This var will hold the search paramater for each mood
 var seach = $("currentmood").val();
+=======
+// var for each mood
+var moodLow = ["puppies", ""];
+var moodMid = [];
+var moodHigh = [];
+
+// This is the search var
+function search() {
+	if (mood <= 1/3) {
+  		console.log("low");
+		} else if (mood <= 2/3) { 
+  		console.log("mid");
+		} else {                    
+  		console.log("high");
+		}
+	};
+>>>>>>> 58dac3e605bd9cfdf9533af0940e25163667c2cc
 
 //This is the queryURL for the ajax 
 var queryURL = 
