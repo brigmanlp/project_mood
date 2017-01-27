@@ -118,7 +118,7 @@ var user = null;
 $("#submit").on('click', function(event){
 	event.preventDefault();
 	var userMood = $("#textarea1").val();
-
+	$("#textarea1").val('');
 	//The params variable is the prefered format for the API. Sent the userMood text to the text parameter.
     var params = {
 	                "documents": [
