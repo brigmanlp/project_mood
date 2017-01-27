@@ -9,6 +9,8 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+var user = null;
+
  /** Firebase Sign In Quick Start Code
      * Function called when clicking the Login/Logout button.
      */
@@ -117,7 +119,7 @@ $("#submit").on('click', function(event){
 	event.preventDefault();
 
 	if(firebase.auth().currentUser !== null){
-		var user = firebase.auth().currentUser;
+		user = firebase.auth().currentUser;
 		var text = $("#textarea1").val().trim();
 
 		database.ref('users/' + user.uid).push({
@@ -127,7 +129,7 @@ $("#submit").on('click', function(event){
 
 });
 
-database.ref('users/' + user.uid).on('value', function(snapshot){
+database.ref('users/').on('value', function(snapshot){
 	console.log('on value runs');
 	console.log(snapshot.val().key(user.uid));
 
