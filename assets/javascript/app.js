@@ -16,6 +16,36 @@ var moodLow = ["puppies", "kittens", "laughing baby", "baby animals", "ice cream
 var moodMid = ["you can do it", "happy song", "it could be worse", "go the distance", "keep fighting"];
 var moodHigh = ["celebration", "oh yeah", "happy day", "success", "winner"];
 
+// CHART AREA
+var color = Chart.helpers.color;
+window.chartColors = {
+  red: 'rgb(255, 99, 132)',
+  orange: 'rgb(255, 159, 64)',
+  yellow: 'rgb(255, 205, 86)',
+  green: 'rgb(75, 192, 192)',
+  blue: 'rgb(54, 162, 235)',
+  purple: 'rgb(153, 102, 255)',
+  grey: 'rgb(231,233,237)'
+};
+
+
+var barChartData = {
+    labels: [],
+    datasets: [{
+        label: 'Dataset 1',
+        backgroundColor: color(window.chartColors.green).alpha(.75).rgbString(),
+        borderColor: window.chartColors.blue,
+        borderWidth: 1,
+        data: []
+    }]
+
+};
+
+window.randomScalingFactor = function() {
+  return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
+}
+//CHART AREA
+
  /** Firebase Sign In Quick Start Code
      * Function called when clicking the Login/Logout button.
      */
@@ -153,6 +183,31 @@ function searchYoutube(score) {
       console.log(videoLink3);
     })      
 
+};
+
+function displayChart() {
+    var MONTHS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    window.onload = function() {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Bar Chart'
+                }
+            }
+        });
+
+    };
+
+    var colorNames = Object.keys(window.chartColors);
 };    
 
 
@@ -206,7 +261,16 @@ database.ref('users/').on('value', function(snapshot){
 	console.log('value runs');
 	if(firebase.auth().currentUser !== null){
 		console.log(snapshot.val()[firebase.auth().currentUser.uid]);
+    var keys = Object.keys(snapshot.val());
+    for (var i = 0; snapshot.val()[keys[i]]; i++){
+      console.log(snapshot.val()[keys[i]]);
+    }
 	}
 });
 
 window.addEventListener('load', initApp);
+
+$(document).ready(function() {
+  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $('.modal-trigger').leanModal();
+});
