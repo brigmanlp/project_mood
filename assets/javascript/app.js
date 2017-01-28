@@ -36,14 +36,20 @@ var barChartData = {
         backgroundColor: color(window.chartColors.green).alpha(.75).rgbString(),
         borderColor: window.chartColors.blue,
         borderWidth: 1,
-        data: []
+        data: [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ]
     }]
 
 };
 
-window.randomScalingFactor = function() {
-  return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
-}
+
 //CHART AREA
 
  /** Firebase Sign In Quick Start Code
