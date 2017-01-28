@@ -36,15 +36,7 @@ var barChartData = {
         backgroundColor: color(window.chartColors.green).alpha(.75).rgbString(),
         borderColor: window.chartColors.blue,
         borderWidth: 1,
-        data: [
-          5,
-          5,
-          5,
-          5,
-          5,
-          5,
-          5
-        ]
+        data: []
     }]
 
 };
@@ -194,7 +186,7 @@ function searchYoutube(score) {
 function displayChart() {
     var MONTHS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-    window.onload = function() {
+    //window.onload = function() {
         var ctx = document.getElementById("canvas").getContext("2d");
         window.myBar = new Chart(ctx, {
             type: 'bar',
@@ -211,7 +203,7 @@ function displayChart() {
             }
         });
 
-    };
+    //};
 
     var colorNames = Object.keys(window.chartColors);
 };    
