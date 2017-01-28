@@ -263,7 +263,7 @@ database.ref('users/').on('value', function(snapshot){
 		console.log(snapshot.val()[firebase.auth().currentUser.uid]);
     var keys = Object.keys(snapshot.val()[firebase.auth().currentUser.uid]);
     for (var i = 0; snapshot.val()[firebase.auth().currentUser[keys[i]]]; i++){
-      console.log(snapshot.val()[firebase.auth().currentUser[keys[i]]];
+      console.log(snapshot.val()[firebase.auth().currentUser[keys[i]]]);
     }
 	}
 });
