@@ -261,7 +261,7 @@ database.ref('users/').on('value', function(snapshot){
 	console.log('value runs');
 	if(firebase.auth().currentUser !== null){
 		console.log(snapshot.val()[firebase.auth().currentUser.uid]);
-    var keys = Object.keys(snapshot.val());
+    var keys = Object.keys(snapshot.val()[firebase.auth().currentUser.uid]);
     for (var i = 0; snapshot.val()[keys[i]]; i++){
       console.log(snapshot.val()[keys[i]]);
     }
