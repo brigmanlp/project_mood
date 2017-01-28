@@ -30,7 +30,7 @@ window.chartColors = {
 
 
 var barChartData = {
-    labels: [],
+    labels: ["1","2","3","4","5","6","7"],
     datasets: [{
         label: 'Dataset 1',
         backgroundColor: color(window.chartColors.green).alpha(.75).rgbString(),
@@ -264,7 +264,9 @@ database.ref('users/').on('value', function(snapshot){
     var keys = Object.keys(snapshot.val()[firebase.auth().currentUser.uid]);
     for (var i = 0; i < keys.length; i++){
       console.log(snapshot.val()[firebase.auth().currentUser.uid][keys[i]]);
+      barChartData.datasets[0].data.push(snapshot.val()[firebase.auth().currentUser.uid][keys[i]].response);
     }
+    displayChart();
 	}
 });
 
