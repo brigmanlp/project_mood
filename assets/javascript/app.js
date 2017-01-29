@@ -37,7 +37,16 @@ var barChartData = {
         borderColor: window.chartColors.blue,
         borderWidth: 1,
         data: []
-    }]
+    }],
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }    
 
 };
 
