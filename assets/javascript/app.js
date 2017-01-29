@@ -30,7 +30,7 @@ window.chartColors = {
 
 
 var barChartData = {
-    labels: ["1","2","3","4","5","6","7"],
+    labels: [],
     datasets: [{
         label: 'Dataset 1',
         backgroundColor: color(window.chartColors.green).alpha(.75).rgbString(),
@@ -184,26 +184,21 @@ function searchYoutube(score) {
 };
 
 function displayChart() {
-    var MONTHS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-    //window.onload = function() {
-        var ctx = document.getElementById("canvas").getContext("2d");
-        window.myBar = new Chart(ctx, {
-            type: 'bar',
-            data: barChartData,
-            options: {
-                responsive: true,
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'Chart.js Bar Chart'
-                }
-            }
-        });
-
-    //};
+      var ctx = document.getElementById("canvas").getContext("2d");
+      window.myBar = new Chart(ctx, {
+          type: 'bar',
+          data: barChartData,
+          options: {
+              responsive: true,
+              legend: {
+                  position: 'top',
+              },
+              title: {
+                  display: true,
+                  text: 'Chart.js Bar Chart'
+              }
+          }
+      });
 
     var colorNames = Object.keys(window.chartColors);
 };    
@@ -243,7 +238,8 @@ $("#submit").on('click', function(event){
 			data = JSON.parse(data);
 			database.ref('users/' + user.uid).push({
 				displayName: user.displayName,
-				response: data.documents[0].score
+				response: data.documents[0].score,
+        moment: moment().format('dddd');
 			})
 			searchYoutube(data.documents[0].score);
 		}
