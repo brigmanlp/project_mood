@@ -239,7 +239,7 @@ $("#submit").on('click', function(event){
 			database.ref('users/' + user.uid).push({
 				displayName: user.displayName,
 				response: data.documents[0].score,
-        moment: moment().format('dddd');
+        moment: moment().format('dddd')
 			})
 			searchYoutube(data.documents[0].score);
 		}
