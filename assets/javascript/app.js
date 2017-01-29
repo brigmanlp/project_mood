@@ -256,8 +256,14 @@ database.ref('users/').on('value', function(snapshot){
 	if(firebase.auth().currentUser !== null){
 		console.log(snapshot.val()[firebase.auth().currentUser.uid]);
     var keys = Object.keys(snapshot.val()[firebase.auth().currentUser.uid]);
+
+    if(keys.length >= 7){
+      keys = keys.slice(keys.length - 7);
+    }
+
     for (var i = 0; i < keys.length; i++){
       console.log(snapshot.val()[firebase.auth().currentUser.uid][keys[i]]);
+      barChartData.labels.push(snapshot.val()[firebase.auth().currentUser.uid][keys[i]].moment);
       barChartData.datasets[0].data.push(snapshot.val()[firebase.auth().currentUser.uid][keys[i]].response);
     }
     displayChart();
