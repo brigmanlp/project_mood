@@ -263,6 +263,9 @@ $("#submit").on('click', function(event){
 database.ref('users/').on('value', function(snapshot){
 	console.log('value runs');
 	if(firebase.auth().currentUser !== null){
+    //clear chart data before we add new data
+    barChartData.labels = [];
+    barChartData.datasets[0].data = [];
 		console.log(snapshot.val()[firebase.auth().currentUser.uid]);
     var keys = Object.keys(snapshot.val()[firebase.auth().currentUser.uid]);
 
