@@ -266,6 +266,7 @@ database.ref('users/').on('value', function(snapshot){
     //clear chart data before we add new data
     barChartData.labels = [];
     barChartData.datasets[0].data = [];
+
 		console.log(snapshot.val()[firebase.auth().currentUser.uid]);
     var keys = Object.keys(snapshot.val()[firebase.auth().currentUser.uid]);
 
@@ -276,7 +277,7 @@ database.ref('users/').on('value', function(snapshot){
     for (var i = 0; i < keys.length; i++){
       console.log(snapshot.val()[firebase.auth().currentUser.uid][keys[i]]);
       barChartData.labels.push(snapshot.val()[firebase.auth().currentUser.uid][keys[i]].moment);
-      barChartData.datasets[0].data.push(Math.round(snapshot.val()[firebase.auth().currentUser.uid][keys[i]].response));
+      barChartData.datasets[0].data.push(Math.round(snapshot.val()[firebase.auth().currentUser.uid][keys[i]].response * 100));
     }
     displayChart();
 	}
