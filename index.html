@@ -40,7 +40,7 @@
         </div>
         <div class="col m6 col s12 input-field">
             <form>
-                <textarea id="textarea1" style="height: 200px" class="materialize-textarea" placeholder="Tell Illuminate about your day. How was your commute this morning? Did you skip breakfast? How was your workday? Did you find time to talk to family or friends? What did you do for yourself today?" length="300"></textarea>
+                <textarea id="textarea1" style="height: 75px" class="materialize-textarea" placeholder="Tell Illuminate about your day. How was your commute this morning? Did you skip breakfast? How was your workday? Did you find time to talk to family or friends? What did you do for yourself today?" length="300"></textarea>
                 <label for="textarea1"></label>
             </form>
             <button id="submit" class="btn-large waves-effect waves-light white black-text" type="submit" name="action">Submit
@@ -64,12 +64,12 @@
                         <main class="mdl-layout__content ">
                             <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-grid">
                                 <!-- Container for the demo -->
-                                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--8-col-desktop">
+                               
                                     <div class="mdl-card__supporting-text mdl-color-text--grey-600">
                                         <!-- Button that handles sign-in/sign-out -->
                                         <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in">Sign in with Google</button>
                                         <!-- Container where we'll display the user details -->
-                                        <div id="sign-in-object" class="quickstart-user-details-container">
+                                        <div id="sign-in-object" style="display: none" class="quickstart-user-details-container">
                                             Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
                                             <div>Firebase auth <code>currentUser</code> object value:</div>
                                             <pre><code id="quickstart-account-details">null</code></pre>
@@ -77,7 +77,6 @@
                                             <pre><code id="quickstart-oauthtoken">null</code></pre>
                                         </div>
                                     </div>
-                                </div>
                             </div>
                         </main>
                     </div>
