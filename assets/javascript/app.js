@@ -32,7 +32,7 @@ window.chartColors = {
 var barChartData = {
     labels: [],
     datasets: [{
-        label: 'Dataset 1',
+        label: firebase.auth().currentUser.displayName,
         backgroundColor: color(window.chartColors.green).alpha(.75).rgbString(),
         borderColor: window.chartColors.blue,
         borderWidth: 1,
