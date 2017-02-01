@@ -212,7 +212,7 @@ function displayChart() {
               },
               title: {
                   display: true,
-                  text: 'Chart.js Bar Chart'
+                  text: 'Sentiment Overview'
               }
           }
       });
@@ -305,3 +305,8 @@ $(document).ready(function() {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal-trigger').leanModal();
 });
+//Clear button function
+$("#clear").on('click', function(event){
+    $("#textarea1").val("");
+});
+
