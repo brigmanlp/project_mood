@@ -39,6 +39,7 @@ var barChartData = {
         data: []
     }],
     options: {
+        responsive: true,
         scales: {
             yAxes: [{
                 ticks: {
