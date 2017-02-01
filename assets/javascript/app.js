@@ -188,13 +188,13 @@ function searchYoutube(score) {
       // Clears the video content
       $("#videos").html("");
       console.log(videoLink1);
-      var iframeOne = '<iframe width="420" height="315" src="https://www.youtube.com/embed/' + videoId1 + '?rel=0" frameborder="0" allowfullscreen></iframe>';
+      var iframeOne = '<iframe width="352" height="198" src="https://www.youtube.com/embed/' + videoId1 + '?rel=0" frameborder="0" allowfullscreen></iframe><br><br>';
       $("#videos").append(iframeOne);
       console.log(videoLink2);
-      var iframeTwo = '<iframe width="420" height="315" src="https://www.youtube.com/embed/' + videoId2 + '?rel=0" frameborder="0" allowfullscreen></iframe>';
+      var iframeTwo = '<iframe width="352" height="198" src="https://www.youtube.com/embed/' + videoId2 + '?rel=0" frameborder="0" allowfullscreen></iframe><br><br>';
       $("#videos").append(iframeTwo);
       console.log(videoLink3);
-      var iframeThree = '<iframe width="420" height="315" src="https://www.youtube.com/embed/' + videoId3 + '?rel=0" frameborder="0" allowfullscreen></iframe>';
+      var iframeThree = '<iframe width="352" height="198" src="https://www.youtube.com/embed/' + videoId3 + '?rel=0" frameborder="0" allowfullscreen></iframe>';
       $("#videos").append(iframeThree);
     })      
 
