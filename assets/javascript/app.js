@@ -40,6 +40,8 @@ var barChartData = {
     }],
     options: {
         responsive: true,
+        // Edit to hopefully fix the mobile chart view
+        maintainAspectRatio: false,
         scales: {
             yAxes: [{
                 ticks: {
