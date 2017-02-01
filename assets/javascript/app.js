@@ -185,14 +185,16 @@ function searchYoutube(score) {
       var videoLink1 = "https://www.youtube.com/watch?v=" + videoId1;
       var videoLink2 = "https://www.youtube.com/watch?v=" + videoId2;
       var videoLink3 = "https://www.youtube.com/watch?v=" + videoId3;
+      // Clears the video content
+      $("#videos").html("");
       console.log(videoLink1);
-      var iframeOne = '<iframe width="420" height="315" src="http://www.youtube.com/embed/' + videoId1 + '?rel=0" frameborder="0" allowfullscreen></iframe>';
+      var iframeOne = '<iframe width="420" height="315" src="https://www.youtube.com/embed/' + videoId1 + '?rel=0" frameborder="0" allowfullscreen></iframe>';
       $("#videos").append(iframeOne);
       console.log(videoLink2);
-      var iframeTwo = '<iframe width="420" height="315" src="http://www.youtube.com/embed/' + videoId2 + '?rel=0" frameborder="0" allowfullscreen></iframe>';
+      var iframeTwo = '<iframe width="420" height="315" src="https://www.youtube.com/embed/' + videoId2 + '?rel=0" frameborder="0" allowfullscreen></iframe>';
       $("#videos").append(iframeTwo);
       console.log(videoLink3);
-      var iframeThree = '<iframe width="420" height="315" src="http://www.youtube.com/embed/' + videoId3 + '?rel=0" frameborder="0" allowfullscreen></iframe>';
+      var iframeThree = '<iframe width="420" height="315" src="https://www.youtube.com/embed/' + videoId3 + '?rel=0" frameborder="0" allowfullscreen></iframe>';
       $("#videos").append(iframeThree);
     })      
 
