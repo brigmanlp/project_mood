@@ -32,7 +32,7 @@ window.chartColors = {
 var barChartData = {
     labels: [],
     datasets: [{
-        label: 'Dataset 1',
+        label: 'Data',
         backgroundColor: color(window.chartColors.green).alpha(.75).rgbString(),
         borderColor: window.chartColors.blue,
         borderWidth: 1,
@@ -271,12 +271,19 @@ $("#submit").on('click', function(event){
 database.ref('users/').on('value', function(snapshot){
 	console.log('value runs');
 	if(firebase.auth().currentUser !== null){
+    console.log(snapshot.val()[firebase.auth().currentUser.uid]);
+    var keys = Object.keys(snapshot.val()[firebase.auth().currentUser.uid]); 
+    var lastKey = keys[keys.length - 1];
+
+    if(snapshot.val()[firebase.auth().currentUser.uid][lastKey].moment === moment().format('dddd')){
+      $("#submit").addClass('disabled');
+    } else {
+      $("#submit").removeClass('disabled');
+    }
+
     //clear chart data before we add new data
     barChartData.labels = [];
     barChartData.datasets[0].data = [];
-
-		console.log(snapshot.val()[firebase.auth().currentUser.uid]);
-    var keys = Object.keys(snapshot.val()[firebase.auth().currentUser.uid]);
 
     if(keys.length >= 7){
       keys = keys.slice(keys.length - 7);
@@ -287,6 +294,7 @@ database.ref('users/').on('value', function(snapshot){
       barChartData.labels.push(snapshot.val()[firebase.auth().currentUser.uid][keys[i]].moment);
       barChartData.datasets[0].data.push(Math.round(snapshot.val()[firebase.auth().currentUser.uid][keys[i]].response * 100));
     }
+    barChartData.datasets[0].label = firebase.auth().currentUser.displayName;
     displayChart();
 	}
 });
