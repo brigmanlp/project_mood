@@ -271,12 +271,18 @@ $("#submit").on('click', function(event){
 database.ref('users/').on('value', function(snapshot){
 	console.log('value runs');
 	if(firebase.auth().currentUser !== null){
+    console.log(snapshot.val()[firebase.auth().currentUser.uid]);
+    var keys = Object.keys(snapshot.val()[firebase.auth().currentUser.uid]); 
+    var lastKey = keys[keys.length - 1];
+    if(snapshot.val()[firebase.auth().currentUser.uid][lastKey].moment === moment().format('dddd')){
+      $("#submit").addClass('disabled');
+    }
+
     //clear chart data before we add new data
     barChartData.labels = [];
     barChartData.datasets[0].data = [];
 
-		console.log(snapshot.val()[firebase.auth().currentUser.uid]);
-    var keys = Object.keys(snapshot.val()[firebase.auth().currentUser.uid]);
+
 
     if(keys.length >= 7){
       keys = keys.slice(keys.length - 7);
