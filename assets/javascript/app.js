@@ -258,7 +258,6 @@ $("#submit").on('click', function(event){
 				response: data.documents[0].score,
         moment: moment().format('dddd')
 			})
-			searchYoutube(data.documents[0].score);
 		}
 
     })
@@ -296,6 +295,7 @@ database.ref('users/').on('value', function(snapshot){
     }
     barChartData.datasets[0].label = firebase.auth().currentUser.displayName;
     displayChart();
+    searchYoutube(snapshot.val()[firebase.auth().currentUser.uid][lastKey].response);
 	}
 });
 
