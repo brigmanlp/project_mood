@@ -208,6 +208,10 @@ function searchYoutube(score) {
 };
 
 function displayChart() {
+      $("#canvas").remove();
+      var canvas = $("<canvas>");
+      canvas.attr('id', 'canvas');
+      $("#canvasHolder").append(canvas);
       ctx = document.getElementById("canvas").getContext("2d");
       window.myBar = new Chart(ctx, {
           type: 'bar',
