@@ -44,6 +44,7 @@ var barChartData = {
         tooltips: {
           enabled: false
         },
+        maintainAspectRatio: true,
         scales: {
             yAxes: [{
                 ticks: {
@@ -212,6 +213,7 @@ function displayChart() {
       var canvas = $("<canvas>");
       canvas.attr('id', 'canvas');
       $("#canvasHolder").append(canvas);
+
       ctx = document.getElementById("canvas").getContext("2d");
       window.myBar = new Chart(ctx, {
           type: 'bar',
