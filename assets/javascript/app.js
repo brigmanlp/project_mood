@@ -17,6 +17,7 @@ var moodMid = ["you can do it", "happy song", "it could be worse", "go the dista
 var moodHigh = ["celebration", "oh yeah", "happy day", "success", "winner"];
 
 // CHART AREA
+var ctx;
 var color = Chart.helpers.color;
 window.chartColors = {
   red: 'rgb(255, 99, 132)',
@@ -204,7 +205,7 @@ function searchYoutube(score) {
 };
 
 function displayChart() {
-      var ctx = document.getElementById("canvas").getContext("2d");
+      ctx = document.getElementById("canvas").getContext("2d");
       window.myBar = new Chart(ctx, {
           type: 'bar',
           data: barChartData,
