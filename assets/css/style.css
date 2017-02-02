@@ -1,0 +1,42 @@
+#textarea1 {
+	height: 75px;
+}
+
+#signin {
+	width:300px; 
+	padding: 0;
+}
+
+#signinButton {
+	background-color: #4d8cb6; 
+	margin-top:10px; 
+	margin-left: 0; 
+	width: 225px;
+}
+
+#modal1 {
+	z-index: 500000;
+}
+
+#modal2 {
+	z-index: 500000;
+}
+
+#sign-in-object {
+	display: none;
+}
+
+#videoButton {
+	background-color: #4d8cb6; 
+	margin-top:10px; 
+	width: 225px;
+}
+
+#canvas {
+	width: 100% !important; 
+	max-width: 800px; 
+	height: 250px !important;
+	-moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+}
