@@ -41,6 +41,9 @@ var barChartData = {
     }],
     options: {
         responsive: true,
+        tooltips: {
+          enabled: false
+        },
         scales: {
             yAxes: [{
                 ticks: {
