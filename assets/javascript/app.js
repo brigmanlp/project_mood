@@ -152,6 +152,7 @@ var barChartData = {
           document.getElementById('quickstart-account-details').textContent = 'null';
           document.getElementById('quickstart-oauthtoken').textContent = 'null';
           $("#submit").addClass('disabled');
+          $("canvas").remove();
           // [END_EXCLUDE]
         }
         // [START_EXCLUDE]
